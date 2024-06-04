@@ -5,11 +5,12 @@ const router = Router();
 
 router.get('/', (req, res) => {
   const products = readJSONFile('./data/products.json');
-  res.render('home', { products });
+  res.render('index', { products });
 });
 
 router.get('/realtimeproducts', (req, res) => {
-  res.render('realTimeProducts');
+  const products = readJSONFile('./data/products.json');
+  res.render('realTimeProducts', { products });
 });
 
 export default router;

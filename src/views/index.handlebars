@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Productos</title>
 </head>
 <body>
     <h1>Productos</h1>
     <ul>
         {{#each products}}
-            <li>{{this.title}} - {{this.description}} - {{this.price}}</li>
+        <li>{{this.title}} - {{this.description}} - {{this.price}}</li>
         {{/each}}
     </ul>
+    <a href="/realtimeproducts">Go to Real-Time Products</a>
 </body>
 </html>

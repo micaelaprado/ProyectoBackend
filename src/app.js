@@ -5,7 +5,7 @@ import { engine } from 'express-handlebars';
 import productsRouter from './routes/products.js';
 import cartsRouter from './routes/carts.js';
 import viewsRouter from './routes/views.js';
-import { readJSONFile } from './utils/fileUtils.js';
+import { readJSONFile, writeJSONFile } from './utils/fileUtils.js';
 
 const app = express();
 const httpServer = createServer(app);
@@ -39,9 +39,15 @@ io.on('connection', (socket) => {
     writeJSONFile('./data/products.json', products);
     io.emit('updateProducts', products);
   });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
 });
 
 const PORT = 8080;
 httpServer.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+export { io };  
